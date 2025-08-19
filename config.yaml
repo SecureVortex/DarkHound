@@ -1,0 +1,20 @@
+# Example config file for DarkHound
+dark_web_sources:
+  - "http://exampleonionurl.onion/"
+  # Add more sources here
+
+alerting:
+  email_to: "Cybersecurity@osborneclarke.com"
+  slack_webhook: ""
+  teams_webhook: ""
+
+threat_intel:
+  haveibeenpwned_api_key: ""
+  dehashed_api_key: ""
+  darkowl_api_key: ""
+  flare_api_key: ""
+  cybersixgill_api_key: ""
+
+database:
+  type: "sqlite"
+  path: "darkhound.db"

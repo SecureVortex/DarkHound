@@ -1,0 +1,5 @@
+aiohttp
+spacy
+streamlit
+pyyaml
+psycopg2

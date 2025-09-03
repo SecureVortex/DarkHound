@@ -1,10 +1,10 @@
 # DarkHound
 
-DarkHound is an automated dark web monitoring and alerting tool designed to continuously scan dark web sources like marketplaces, forums, and breach databases, for evidence that Osborne Clarke (OC) user accounts or credentials have been leaked or are for sale.
+DarkHound is an automated dark web monitoring and alerting tool designed to continuously scan dark web sources like marketplaces, forums, and breach databases, for evidence that user accounts or credentials have been leaked or are for sale.
 
 ## Core Features
 
-- **Keyword/Domain Monitoring**: Searches for `@osborneclarke.com` emails, usernames, and related keywords on dark web sites.
+- **Keyword/Domain Monitoring**: Searches for organization emails, usernames, and related keywords on dark web sites.
 - **Credential Exposure Detection**: Flags usernames, passwords, hashes, or PII tied to OC users.
 - **Threat Intel Integration**: Leverages APIs like HaveIBeenPwned, DeHashed, DarkOwl, Flare, or Cybersixgill.
 - **AI-Powered Text Mining**: NLP models scan leaked dataset dumps, discussions, and posts for OC mentions.

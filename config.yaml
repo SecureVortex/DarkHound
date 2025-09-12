@@ -1,20 +1,32 @@
-# Example config file for DarkHound
+# DarkHound Configuration File
+# Sensitive values should be set via environment variables (see secure_config.py)
+
 dark_web_sources:
   - "http://exampleonionurl.onion/"
-  # Add more sources here
+  # Add more sources here - load from DARKHOUND_SOURCES env var if needed
 
 alerting:
-  email_to: "Cybersecurity@osborneclarke.com"
-  slack_webhook: ""
-  teams_webhook: ""
+  # Use environment variables for sensitive data:
+  # DARKHOUND_EMAIL_TO, DARKHOUND_SLACK_WEBHOOK, DARKHOUND_TEAMS_WEBHOOK  
+  email_to: ""  # Set via DARKHOUND_EMAIL_TO environment variable
+  slack_webhook: ""  # Set via DARKHOUND_SLACK_WEBHOOK environment variable  
+  teams_webhook: ""  # Set via DARKHOUND_TEAMS_WEBHOOK environment variable
 
 threat_intel:
-  haveibeenpwned_api_key: ""
-  dehashed_api_key: ""
-  darkowl_api_key: ""
-  flare_api_key: ""
-  cybersixgill_api_key: ""
+  # API keys should ALWAYS be set via environment variables for security
+  # DARKHOUND_HAVEIBEENPWNED_API_KEY, DARKHOUND_DEHASHED_API_KEY, etc.
+  haveibeenpwned_api_key: ""  # Set via DARKHOUND_HAVEIBEENPWNED_API_KEY
+  dehashed_api_key: ""        # Set via DARKHOUND_DEHASHED_API_KEY
+  darkowl_api_key: ""         # Set via DARKHOUND_DARKOWL_API_KEY
+  flare_api_key: ""           # Set via DARKHOUND_FLARE_API_KEY
+  cybersixgill_api_key: ""    # Set via DARKHOUND_CYBERSIXGILL_API_KEY
 
 database:
   type: "sqlite"
-  path: "darkhound.db"
+  path: "darkhound.db"  # Can be overridden with DARKHOUND_DB_PATH
+
+# Security settings
+security:
+  max_scan_timeout: 30
+  max_concurrent_scans: 5
+  enable_request_logging: false  # Set to true only for debugging

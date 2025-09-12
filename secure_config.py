@@ -63,6 +63,20 @@ class SecureConfig:
             email = self._config['alerting']['email_to']
             if email and '@' not in email:
                 raise ValueError("Invalid email format in alerting.email_to")
+        
+        # Validate security settings
+        security_config = self._config.get('security', {})
+        if 'max_scan_timeout' in security_config:
+            timeout = security_config['max_scan_timeout']
+            if not isinstance(timeout, int) or timeout <= 0 or timeout > 300:
+                logger.warning("Invalid max_scan_timeout, using default 30 seconds")
+                self._config['security']['max_scan_timeout'] = 30
+        
+        if 'max_concurrent_scans' in security_config:
+            concurrent = security_config['max_concurrent_scans']
+            if not isinstance(concurrent, int) or concurrent <= 0 or concurrent > 20:
+                logger.warning("Invalid max_concurrent_scans, using default 5")
+                self._config['security']['max_concurrent_scans'] = 5
     
     def _load_environment_overrides(self) -> None:
         """Load sensitive values from environment variables."""
@@ -105,6 +119,11 @@ class SecureConfig:
             'database': {
                 'type': 'sqlite',
                 'path': 'darkhound.db'
+            },
+            'security': {
+                'max_scan_timeout': 30,
+                'max_concurrent_scans': 5,
+                'enable_request_logging': False
             }
         }
     
